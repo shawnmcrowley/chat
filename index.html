@@ -25,6 +25,7 @@
         $("#send").click(()=>{
             var message = { name: $("#name").val(), message: $("#message").val()}
             postMessage(message)
+            // Reset Form Field since we are using sockets
             $("#name").val('');
             $("#message").val('');
             //window.location.reload();
