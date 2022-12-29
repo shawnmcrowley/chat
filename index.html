@@ -25,6 +25,8 @@
         $("#send").click(()=>{
             var message = { name: $("#name").val(), message: $("#message").val()}
             postMessage(message)
+            $("#name").val('');
+            $("#message").val('');
             //window.location.reload();
         })
         

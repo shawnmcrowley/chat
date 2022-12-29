@@ -5,11 +5,12 @@ const PORT = 3000;
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const mongoose = require('mongoose');
+const env = require('dotenv/config.js');
 
 app.use(express.static(__dirname));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
-const db = 'mongodb+srv://scrowley:Vj13GxHi8907OsDg@cluster0.hyutkja.mongodb.net/chat-app?retryWrites=true&w=majority'
+const db = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@cluster0.hyutkja.mongodb.net/chat-app?retryWrites=true&w=majority`;
 
 const Message = mongoose.model('Message', {
     name: String,
@@ -45,6 +46,6 @@ mongoose.connect(db, (err) => {
     console.log("Database Connected...");
 })
 const server = http.listen(PORT, () => {
-console.log("Server is Running....", server.address().port);
+    console.log("Server is Running....", server.address().port);
 });
 
