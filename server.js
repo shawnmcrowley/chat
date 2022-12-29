@@ -10,7 +10,7 @@ const env = require('dotenv/config.js');
 app.use(express.static(__dirname));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
-const db = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@cluster0.hyutkja.mongodb.net/chat-app?retryWrites=true&w=majority`;
+const db = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}${process.env.MONGODB_URL}`;
 
 const Message = mongoose.model('Message', {
     name: String,
