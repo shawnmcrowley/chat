@@ -1,7 +1,6 @@
 const express  = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const PORT = 3000;
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const mongoose = require('mongoose');
@@ -45,6 +44,9 @@ mongoose.set('strictQuery', true);
 mongoose.connect(db, (err) => {
     console.log("Database Connected...");
 })
+
+// Start Your Server
+const PORT = process.env.PORT || 3000;
 const server = http.listen(PORT, () => {
     console.log("Server is Running....", server.address().port);
 });
